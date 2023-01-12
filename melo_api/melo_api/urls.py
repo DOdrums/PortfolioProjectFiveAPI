@@ -21,4 +21,5 @@ urlpatterns = [
     path("", include("profiles.urls")),
     path("", include("post.urls")),
     path("", include("song.urls")),
+    path("", include("comment.urls")),
 ]
