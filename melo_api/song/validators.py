@@ -6,16 +6,13 @@ ALLOWED_MIME_TYPES = [
     "audio/vnd.wav",
     "audio/wav",
     "audio/x-wav",
-    "x-msdos-program",
+    "application/x-msdos-program",
 ]
 
 ALLOWED_FILE_EXTENTIONS = ["mp3", "ogg", "wav"]
 
 
 def is_allowed_audio(file):
-    import pdb
-
-    pdb.set_trace()
     # When the file is empty it returns is_allowed and a None file_type
     if not file:
         return True, None
@@ -33,6 +30,9 @@ def is_allowed_audio(file):
 
 
 def check_mime_type(file):
+    import pdb
+
+    pdb.set_trace()
     mime = file.content_type
 
     is_allowed = mime in ALLOWED_MIME_TYPES
