@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary_storage.storage import VideoMediaCloudinaryStorage
-from cloudinary_storage.validators import validate_video
+from .validators import is_allowed_audio
 
 
 class Song(models.Model):
@@ -12,6 +12,7 @@ class Song(models.Model):
         upload_to="songs/",
         storage=VideoMediaCloudinaryStorage(),
         default="songs/rock_it_pycp3h",
+        validators=[is_allowed_audio],
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
