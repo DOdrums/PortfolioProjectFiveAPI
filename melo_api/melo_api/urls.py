@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("post.urls")),
     path("", include("song.urls")),
     path("", include("comment.urls")),
+    path("", include("followers.urls")),
 ]
