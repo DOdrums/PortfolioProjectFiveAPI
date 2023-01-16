@@ -10,9 +10,6 @@ ALLOWED_FILE_EXTENTIONS = ["mp3", "m4a"]
 
 
 def validate_audio(audio):
-    # import pdb
-
-    # pdb.set_trace()
     file = audio
     # When the file is empty it returns is_allowed and a None file_type
     if not file:

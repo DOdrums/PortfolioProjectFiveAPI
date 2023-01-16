@@ -4,7 +4,8 @@
 
 ![Multi screen mockup](static/images/multi-device-mockup.png)
 
-This project is built as part of the Code Institute Full Stack Software Development course. For this course, Dirk Ornee had to built a fourth Portfolio Project. Since his cousin just started a nail salon and was in dire need of a website with booking capabilities, what better way to build a fourth Portfolio Project and help somebody at the same time! Important note: this is not the actual live version that is used by the nail salon, this version is used purely as a project for Code Institute and users can book appointments freely (you won't suddenly be expected to show up at a nail salon).
+This project is built as part of the Code Institute Full Stack Software Development course. For this course, Dirk Ornee had to built a fifth Portfolio Project. The focus with this project lies on having a good interactive front-end built in React and a backend built with Django REST that functions as a API to the frontend. This repo contains the backend part of the project.
+Since Dirk Ornee is himself a musician, it seemed a good idea to built a social media platform for musicians, where users can find a connect with other musicians and discover and promote new music.
 
 ## Live Site
 
@@ -13,59 +14,6 @@ This project is built as part of the Code Institute Full Stack Software Developm
 ## Github Repository
 
 [PortfolioProjectFour](https://github.com/DOdrums/PortfolioProjectFour)
-
-
-<!-- TOC -->
-
-- [Smart House Inventory](#smart-house-inventory)
-    - [Portfolio Project 4: Full Stack Toolkit](#portfolio-project-4-full-stack-toolkit)
-    - [Live Site](#live-site)
-    - [Github Repository](#github-repository)
-    - [UX](#ux)
-        - [Business Goals](#business-goals)
-        - [Target Audience](#target-audience)
-        - [User Stories](#user-stories)
-        - [Structure of the app](#structure-of-the-app)
-        - [Logic/Database Diagram](#logicdatabase-diagram)
-        - [Color Scheme](#color-scheme)
-        - [Features](#features)
-            - [Book page](#book-page)
-            - [User dashboard](#user-dashboard)
-            - [Home](#home)
-            - [Nav bar](#nav-bar)
-            - [Hero Image](#hero-image)
-            - [Treatments](#treatments)
-            - [About](#about)
-            - [Footer](#footer)
-            - [About](#about)
-            - [Treatments](#treatments)
-            - [Gallery](#gallery)
-            - [Contact](#contact)
-            - [Login/Logout](#loginlogout)
-            - [Admin](#admin)
-        - [Future Features](#future-features)
-            - [Notifications](#notifications)
-    - [Credits](#credits)
-        - [Code](#code)
-        - [Images](#images)
-        - [Technologies used](#technologies-used)
-    - [Testing](#testing)
-    - [Security Features and Defensive Design](#security-features-and-defensive-design)
-        - [User authentication](#user-authentication)
-        - [Form Validation](#form-validation)
-        - [Database Security](#database-security)
-    - [Deployment](#deployment)
-        - [Local Deployment](#local-deployment)
-        - [Production Deployment Initial](#production-deployment-initial)
-            - [Create Heroku app:](#create-heroku-app)
-            - [Connect Postgres Database:](#connect-postgres-database)
-            - [Deploy App on Heroku:](#deploy-app-on-heroku)
-        - [Production Deployment Update](#production-deployment-update)
-            - [PostgreSQL database:](#postgresql-database)
-    - [Acknowledgements](#acknowledgements)
-
-<!-- /TOC -->
-
 
 ## UX
 
@@ -333,20 +281,7 @@ Users can already receive notifications via email, but it would be great to have
 
 ### Code
 
-* [Stackoverflow(answer from 'Aaron')](https://stackoverflow.com/a/61139427/16545052) - for the regex validation on the 'allowed_times' model.
-* [Stackoverflow(answer from 'xyres')](https://stackoverflow.com/a/43305140/16545052) - for using Django context variables in Javascript.
-* [Reddit(answer from OP himself)](https://www.reddit.com/r/django/comments/ma35nu/django_allauth_custom_signup_form_doesnt_save_all/) - to allow allauth adapter to be overriden, for saving of phone numbers in database.
-* [Medium article](https://gavinwiener.medium.com/modifying-django-allauth-forms-6eb19e77ef56) - for adding extra fields to allauth.
-* [Medium article](https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for-oauth-20c84888c318) - for making a custom user model connected to allauth.
-* [Stackoverflow(answer from 'Stilian')](https://stackoverflow.com/a/67664840/16545052) - for the clean method in the booking form
-* [Stackeroverflow(answer from 'Colin')](https://stackoverflow.com/a/36925822/16545052) - for making a workaround for the disabled field in the booking form
-* [Stackeroverflow(answer from 'Devang Padhiyar')](https://stackoverflow.com/a/55561290/16545052) - to add two querysets together in Dashboard view
-* [Stackeroverflow(answer from 'fceruti')](https://stackoverflow.com/a/9957402/16545052) - to update a user instances information in the POST method of the Dashboard view.
-* [Stackeroverflow(answer from 'Alex Fuentes')](https://stackoverflow.com/a/25319333/16545052) - to make the alert message that appears when editing user data slide up after 4 seconds. 
-* [Codepen](https://codepen.io/dotproto/pen/mdOXve) - for the css code of a divider used on homepage.
-* [Stackeroverflow(answer from 'Griffosx')](https://stackoverflow.com/a/13624393/16545052) - to check if loop index is even or uneven in treatments page. 
-* [Stackoverflow(answer from 'vee')](https://stackoverflow.com/a/70415401/16545052) - to listen to the mobile navbar events.
-* [Github(responsive-html-email-template)](https://github.com/leemunroe/responsive-html-email-template) - for a basic html template for emailing.
+* [Stackoverflow (answer from chander)](https://stackoverflow.com/a/35325278/16545052) - as inspiration for writing the audio file validator
 
 
 ### Images
