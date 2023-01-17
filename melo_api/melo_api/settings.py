@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "cloudinary",
     "rest_framework",
+    "django_filters",
     "django_countries",
     "profiles",
     "comment",
@@ -85,6 +86,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "melo_api.wsgi.application"
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+}
 
 
 # Database
