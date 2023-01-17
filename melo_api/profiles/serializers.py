@@ -8,11 +8,18 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     songs_count = serializers.ReadOnlyField()
 
+    is_owner = serializers.SerializerMethodField()
+
+    def get_is_owner(self, obj):
+        request = self.context["request"]
+        return request.user == obj.owner
+
     class Meta:
         model = Profile
         fields = [
             "id",
             "owner",
+            "is_owner",
             "name",
             "subname",
             "contact_info",
