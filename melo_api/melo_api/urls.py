@@ -22,6 +22,7 @@ urlpatterns = [
     path("", include("comment.urls")),
     path("", include("followers.urls")),
     path("", include("likes.urls")),
+    path("", include("mics.urls")),
     path("", include("post.urls")),
     path("", include("profiles.urls")),
     path("", include("song.urls")),
