@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "followers",
     "likes",
     "mics",
+    "instruments",
 ]
 
 MIDDLEWARE = [
