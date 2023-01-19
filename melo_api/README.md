@@ -286,50 +286,27 @@ Users can already receive notifications via email, but it would be great to have
 * [Stackoverflow (answer from chander)](https://stackoverflow.com/a/35325278/16545052) - as inspiration for writing the audio file validator
 * Code Institute Walkthrough project - as a broad general inspiration for the whole project.
 
-
-### Images
-
-All images used in the readme are screenshots of the project and a multi device mock up generated with [mockup generator](https://techsini.com/multi-mockup/index.php)
-Images inside the app are either royalty free stock imagery, or courtesy of NailsbyFaar.
-
 ### Technologies used
-
-[HTML](https://html.spec.whatwg.org/) - for the structure of the website and mocking of the terminal (written by Code Institute)
-
-[HTMLemail/inline](https://htmlemail.io/inline/) - for making the email html template into inline html.
-
-[CSS](https://www.w3.org/Style/CSS/Overview.en.html) - to provide styling to the page.
-
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - for the structure of the website and mocking of the terminal (written by Code Institute)
 
 [Python](https://www.python.org/) - to write all the logic of the app
 
 [Django](https://www.djangoproject.com/) - used as main framework for the app, which both all backend and most frontend elements are built on. The following notable libraries/packages were added to django:
 
-* django-ses: for handling emails with Amazon's SES.
 * django-allauth: for handing all user models and login functionality.
 * cloudinary: for saving images in cloudinary and serving them to the client.
-* django-crispy-forms: for making the django forms look better.
+* django-countries: for getting a list of all countries as choices in the profile model.
+* python-magic: to check audio files for mime type.
+* django-filter: to make filtering of model instances in the API possible.
+
+[Django Rest](https://www.django-rest-framework.org/) - used as main framework to turn the app into an API.
 
 [ElephantSQL](https://www.elephantsql.com/) - used to manage a PostgreSQL database.
 
-[Bootstrap 5.2](https://getbootstrap.com/) - used to style the grunt of the project.
-
-[Jquery](https://jquery.com/) - to make DOM manipulation a bit less painful.
-
 [Lucidchart](https://www.lucidchart.com/pages/) used to make a database diagram.
-
-[Gitpod](https://www.gitpod.io/) - used to connect a browser based VScode to github.
 
 [Github](https://github.com/) - used for version control and deployment of the website.
 
 [Heroku](https://dashboard.heroku.com/) - to deploy the app.
-
-[JShint](https://jshint.com/) - used to validate javascript.
-
-[NuHtmlChecker](https://validator.w3.org/nu/) - used to validate HTML.
-
-[Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php) - to create an image of the website shown on different devices.
 
 ## Testing
 
