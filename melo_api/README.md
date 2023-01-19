@@ -281,7 +281,10 @@ Users can already receive notifications via email, but it would be great to have
 
 ### Code
 
+* [Django documentation](https://docs.djangoproject.com/en/4.1/) - for many django specific solutions, like the get_foo_display() 
+* [Django rest framework](https://www.django-rest-framework.org/) - for many drf specific solutions 
 * [Stackoverflow (answer from chander)](https://stackoverflow.com/a/35325278/16545052) - as inspiration for writing the audio file validator
+* Code Institute Walkthrough project - as a broad general inspiration for the whole project.
 
 
 ### Images
