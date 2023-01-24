@@ -108,12 +108,22 @@ REST_FRAMEWORK = {
         )
     ],
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DATETIME_FORMAT": "%d %b %Y",
 }
+
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer",
+    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = "melo-auth"
 JWT_AUTH_REFRESH_COOKIE = "melo-refresh-token"
+JWT_AUTH_SAMESITE = "None"
+
 
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "melo_api.serializers.CurrentUserSerializer"
