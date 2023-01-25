@@ -130,7 +130,7 @@ JWT_AUTH_SAMESITE = "None"
 if "CLIENT_ORIGIN" in os.environ:
     CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
 else:
-    CORS_ALLOWED_ORIGINS = ["localhost:3000"]
+    CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
 
 CORS_ALLOWED_CREDENTIALS = True
 
