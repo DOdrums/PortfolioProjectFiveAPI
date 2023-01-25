@@ -13,9 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import dj_database_url
 import os
+import mimetypes
 
 if os.path.exists("env.py"):
     import env
+
+mimetypes.add_type("text/css", ".css", True)
 
 CLOUDINARY_STORAGE = {"CLOUDINARY_URL": os.environ.get("CLOUDINARY_URL")}
 MEDIA_URL = "/melo/"
