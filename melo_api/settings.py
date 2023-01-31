@@ -130,6 +130,7 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = "melo-auth"
 JWT_AUTH_REFRESH_COOKIE = "melo-refresh-token"
 JWT_AUTH_SAMESITE = "None"
+CORS_ALLOW_CREDENTIALS = True
 
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000",
