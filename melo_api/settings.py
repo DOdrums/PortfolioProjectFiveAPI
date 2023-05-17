@@ -38,7 +38,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEV" in os.environ
 
-ALLOWED_HOSTS = ["localhost", "melo-api.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "melo-api.herokuapp.com",
+    "3000-dodrums-portfolioprojec-4unttyfz6fq.ws-eu97.gitpod.io",
+    "127.0.0.1:8000",
+]
 
 
 # Application definition
@@ -135,6 +140,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://melo.herokuapp.com",
+    "https://3000-dodrums-portfolioprojec-4unttyfz6fq.ws-eu97.gitpod.io",
 ]
 if "CLIENT_ORIGIN_DEV" in os.environ:
     extracted_url = re.match(
