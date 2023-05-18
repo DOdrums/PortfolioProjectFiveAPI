@@ -36,7 +36,7 @@ class PostSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "profile_id",
-            "profile image",
+            "profile_image",
             "like_id",
             "comments_count",
         ]
