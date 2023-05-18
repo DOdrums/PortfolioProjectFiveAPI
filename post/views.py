@@ -1,4 +1,6 @@
-from rest_framework import permissions, generics
+from django.db.models import Count
+from rest_framework import permissions, generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Post
 from .serializers import PostSerializer
 from melo_api.permissions import IsOwnerOrReadOnly
@@ -27,3 +29,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    queryset = Post.objects.annotate(
+        comments_count=Count("comment", distinct=True),
+    ).order_by("created_at")
