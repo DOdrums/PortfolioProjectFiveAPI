@@ -1,12 +1,21 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import Mic
 from .serializers import MicSerializer
 from melo_api.permissions import IsOwnerOrReadOnly
 
 
-class MicList(generics.ListAPIView):
+class MicList(generics.ListCreateAPIView):
+    """
+    List all mics or create a like if a user is logged in.
+    The perform_create method associates the like with the logged in user.
+    """
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Mic.objects.all()
     serializer_class = MicSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class MicDetail(generics.RetrieveDestroyAPIView):
