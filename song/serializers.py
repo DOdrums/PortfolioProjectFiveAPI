@@ -37,7 +37,7 @@ class SongSerializer(serializers.ModelSerializer):
             "updated_at",
             "profile_id",
             "profile_image",
-            "like_id",
             "comments_count",
+            "mics_count",
             "mic_id",
         ]
