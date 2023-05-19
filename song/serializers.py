@@ -20,7 +20,7 @@ class SongSerializer(serializers.ModelSerializer):
     def get_mic_id(self, obj):
         user = self.context["request"].user
         if user.is_authenticated:
-            mic = Mic.objects.filter(owner=user, post=obj).first()
+            mic = Mic.objects.filter(owner=user, song=obj).first()
             return mic.id if mic else None
         return None
 
