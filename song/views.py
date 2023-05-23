@@ -1,5 +1,6 @@
 from django.db.models import Count
-from rest_framework import permissions, generics
+from rest_framework import permissions, generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Song
 from .serializers import SongSerializer
 from melo_api.permissions import IsOwnerOrReadOnly
@@ -11,7 +12,22 @@ class SongList(generics.ListCreateAPIView):
     The perform_create method associates the song with the logged in user.
     """
 
-    queryset = Song.objects.all()
+    queryset = Song.objects.annotate(
+        comments_count=Count("comment", distinct=True),
+        mics_count=Count("mic", distinct=True),
+    ).order_by("created_at")
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    ordering_fields = [
+        "mics_count",
+    ]
+    filterset_fields = [
+        "owner__followed__owner__profile",
+        "mics__owner__profile",
+    ]
+
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = SongSerializer
 
