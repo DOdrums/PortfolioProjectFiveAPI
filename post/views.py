@@ -12,7 +12,15 @@ class PostList(generics.ListCreateAPIView):
     The perform_create method associates the post with the logged in user.
     """
 
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count=Count("comment", distinct=True),
+    ).order_by("created_at")
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        "owner__followed__owner__profile",
+    ]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
 
