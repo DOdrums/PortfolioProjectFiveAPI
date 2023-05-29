@@ -18,7 +18,7 @@ class CommentList(generics.ListCreateAPIView):
     filter_backends = [
         DjangoFilterBackend,
     ]
-    filterset_fields = ["post"]
+    filterset_fields = ["post", "song"]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
