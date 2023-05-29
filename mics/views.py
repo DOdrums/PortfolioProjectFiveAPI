@@ -6,8 +6,8 @@ from melo_api.permissions import IsOwnerOrReadOnly
 
 class MicList(generics.ListCreateAPIView):
     """
-    List all mics or create a like if a user is logged in.
-    The perform_create method associates the like with the logged in user.
+    List all mics or create a mic if a user is logged in.
+    The perform_create method associates the mic with the logged in user.
     """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
