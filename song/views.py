@@ -26,6 +26,7 @@ class SongList(generics.ListCreateAPIView):
     filterset_fields = [
         "owner__followed__owner__profile",
         "mic__owner__profile",
+        "owner__profile",
     ]
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
