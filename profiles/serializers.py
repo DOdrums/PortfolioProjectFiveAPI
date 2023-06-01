@@ -5,6 +5,7 @@ from followers.models import Follower
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
+    following_id = serializers.SerializerMethodField()
     country = serializers.ReadOnlyField(source="country.name")
     posts_count = serializers.ReadOnlyField()
     songs_count = serializers.ReadOnlyField()
@@ -40,6 +41,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "country",
             "status",
             "status_name",
+            "following_id",
             "last_login",
             "date_joined",
             "posts_count",
