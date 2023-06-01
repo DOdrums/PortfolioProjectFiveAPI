@@ -2,6 +2,7 @@ from rest_framework import generics, filters
 from django.db.models import Count
 from .models import Profile
 from .serializers import ProfileSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 from melo_api.permissions import IsOwnerOrReadOnly
 
 
@@ -16,7 +17,10 @@ class ProfileList(generics.ListAPIView):
         songs_count=Count("owner__song", distinct=True),
     ).order_by("-date_joined")
     serializer_class = ProfileSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    filterset_fields = [
+        "owner__following__followed__profile",
+    ]
     ordering_fields = [
         "posts_count",
         "songs_count",
