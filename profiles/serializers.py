@@ -8,6 +8,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     following_id = serializers.SerializerMethodField()
     country = serializers.ReadOnlyField(source="country.name")
+    country_code = serializers.ReadOnlyField(source="country.code")
     posts_count = serializers.ReadOnlyField()
     songs_count = serializers.ReadOnlyField()
     status_choices = serializers.SerializerMethodField()
@@ -48,6 +49,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "description",
             "avatar",
             "country",
+            "country_code",
             "status",
             "status_name",
             "following_id",
