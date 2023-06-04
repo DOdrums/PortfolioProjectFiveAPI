@@ -21,3 +21,4 @@ class InstrumentDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Instrument.objects.all()
     serializer_class = InstrumentSerializer
+    permission_classes = [IsOwnerOrReadOnly]
