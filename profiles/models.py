@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from .countries import COUNTRIES
 
 
 class Profile(models.Model):
@@ -13,7 +14,7 @@ class Profile(models.Model):
     contact_info = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     avatar = models.ImageField(upload_to="images/", default="../default_profile_opkx3m")
-    country = CountryField()
+    country = models.CharField(max_length=2, choices=COUNTRIES, null=True, blank=True)
     status = models.CharField(max_length=2, choices=STATUS, null=True, blank=True)
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
