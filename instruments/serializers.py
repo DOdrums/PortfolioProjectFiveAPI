@@ -8,6 +8,7 @@ class InstrumentSerializer(serializers.ModelSerializer):
     instrument_name = serializers.SerializerMethodField()
     experience_name = serializers.SerializerMethodField()
     instrument_choices = serializers.SerializerMethodField()
+    experience_choices = serializers.SerializerMethodField()
 
     def get_instrument_name(self, obj):
         return obj.get_instrument_display()
@@ -15,8 +16,11 @@ class InstrumentSerializer(serializers.ModelSerializer):
     def get_experience_name(self, obj):
         return obj.get_experience_display()
 
-    def get_instrument_choices(self, ojb):
+    def get_instrument_choices(self, obj):
         return dict(INSTRUMENTS)
+
+    def get_experience_choices(self, obj):
+        return dict(Instrument.LEVEL)
 
     class Meta:
         model = Instrument
@@ -29,4 +33,5 @@ class InstrumentSerializer(serializers.ModelSerializer):
             "experience_name",
             "created_at",
             "instrument_choices",
+            "experience_choices",
         ]
