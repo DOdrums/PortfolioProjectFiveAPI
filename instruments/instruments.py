@@ -270,4 +270,5 @@ INSTRUMENTS = [
     ("269", "Yotar"),
     ("270", "Zither"),
     ("271", "Zither banjo"),
+    ("272", "No instrument set yet"),
 ]
