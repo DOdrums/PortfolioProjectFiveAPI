@@ -6,7 +6,11 @@ from .countries import COUNTRIES
 
 
 class Profile(models.Model):
-    STATUS = [("BM", "Looking for bandmembers"), ("LB", "Looking for band")]
+    STATUS = [
+        ("BM", "Looking for bandmembers"),
+        ("LB", "Looking for band"),
+        ("AS", "All set!"),
+    ]
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
