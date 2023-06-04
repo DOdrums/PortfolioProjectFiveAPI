@@ -1,14 +1,13 @@
 from rest_framework import serializers
-from django_countries import countries
 from .models import Profile
 from followers.models import Follower
+from .countries import COUNTRIES
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     following_id = serializers.SerializerMethodField()
-    country = serializers.ReadOnlyField(source="country.name")
-    country_code = serializers.ReadOnlyField(source="country.code")
+    country_name = serializers.SerializerMethodField()
     posts_count = serializers.ReadOnlyField()
     songs_count = serializers.ReadOnlyField()
     status_choices = serializers.SerializerMethodField()
@@ -24,8 +23,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_status_name(self, obj):
         return obj.get_status_display()
 
+    def get_country_name(self, obj):
+        return obj.get_country_display()
+
     def get_country_choices(sefl, obj):
-        return dict(countries)
+        return dict(COUNTRIES)
 
     def get_status_choices(self, obj):
         return dict(Profile.STATUS)
@@ -49,7 +51,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "description",
             "avatar",
             "country",
-            "country_code",
+            "country_name",
             "status",
             "status_name",
             "following_id",
