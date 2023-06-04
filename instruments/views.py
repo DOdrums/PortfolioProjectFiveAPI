@@ -9,7 +9,7 @@ class InstrumentList(generics.ListCreateAPIView):
     queryset = Instrument.objects.all()
     serializer_class = InstrumentSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = [
+    filterset_fields = [
         "owner__profile",
     ]
 
