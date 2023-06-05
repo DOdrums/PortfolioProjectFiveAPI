@@ -113,37 +113,33 @@ The Comment model:
 * is used to comment on either songs or posts
 * has foreign key relationship with both Post and Song model
 
-
-
-### Color Scheme
-
-The color scheme of the salon itself was used, see the image below. It creates a very feminine and calm look, which perfectly fits the nail polish theme.
-
-![color scheme](static/images/color-scheme.png)
-
 ### Features
 
-The app's biggest feature is of course the booking page and consequently, the user dashboard. These two pages are all you need, to book an appointment, cancel the booked appointment or change its date. This is where we will start our journey:
+The features of this app will be mostly described in the [Front-End Readme](https://github.com/DOdrums/portfolioprojectfive), but some functionality can be displayed through the DRF dev environment screenshots:
 
-#### Book page
+#### Posts and Songs
 
-This page is where most users, especially the recurring ones, will spent the grunt of their time. When you first open the page, you will be welcomed by a simple form with datepicker. You are urged to select a treatment first, since the duration of the treatment is relevant for which times are bookable.
+The posts and songs can be listed and created with ListCreate view. When you run a dev server in DRF, you can view the objects in the database and apply any filters that have been set on the view.
 
-![book page](static/images/book.png)
+![posts](static/readme-files/post-list.png)
 
-After selecting a treatment, the datepicker will become fully visible and usable and users can now select a date. When you select a date, the available times in the time picker will be rendered and user can scroll through the available times. After user picks a time, the time gets entered automatically in the date field of the booking form. The other fields in the form are either auto-filled when user is logged in, or filled in by user upon booking.
+Below you can see what the list view looks like with filtering options. You can filter posts (and songs) by profile:
 
-![book page treatment selected](static/images/book-selected-treatment.png)
+![posts-filter](static/readme-files/post-list-filters.png)
 
-After hitting the book button, user will get confirmation of their booking and are urged to go to their account dashboard.
+When you want to get all the details of just one post, you can visit the route to the detail view. This goes for the song models as well.
 
-![book page confirmation](static/images/book-confirmation.png)
+![posts-filter](static/readme-files/post-detail.png)
 
-#### User dashboard
+#### Profiles
 
-When the user goes to their account dashboard, they are greeted by two sections: a personal info section and a section with all their booked appointments (if any).
+Profiles can be listed with the ListView. They cannot be created with this view however, since creation is automatically handled with the creation of User instances. When listing the profiles, you'll see that the choices for countries and status are also displayed. These are used in the front-end to display a select box for the user to select a country when updating their profile.
 
-![user dashboard](static/images/dashboard.png)
+![profile list](static/readme-files/profiles-list.png)
+
+Just like the posts and songs can be filtered, the profiles can also be filtered. This is to filter out profiles that are followed by a specific User.
+
+![profile filters](static/readme-files/profiles-filters.png)
 
 By default, the user's personal info is not editable, to limit the chance of user-error. If the user decides they want to chance some of their info, they can hit the edit button, which will cause the 'First name', 'Last name' and 'Phone number' field to pop open.
 
