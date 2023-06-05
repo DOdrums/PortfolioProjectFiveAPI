@@ -90,6 +90,7 @@ The Song model:
 * these instances represent the User's songs seen in the front-end
 * has foreign key relationship with the user model
 * has primary key relationship with the comment model and mic model
+* The song model has a custom validator (validators.py) to check if the file is .mp3 or .m4a, which are the only allowed file types.
 
 The Mic and Like model:
 
@@ -169,7 +170,6 @@ Future features include an addition to the profile model or possibly a seperate 
 
 * django-allauth: for handing all user models and login functionality.
 * cloudinary: for saving images in cloudinary and serving them to the client.
-* django-countries: for getting a list of all countries as choices in the profile model.
 * python-magic: to check audio files for mime type.
 * django-filter: to make filtering of model instances in the API possible.
 
@@ -196,11 +196,24 @@ Extensive testing was done to make sure all the features work as expected. To re
 
 ### Form Validation
 
-Extensive form validation is used on front end as well as backend.
+Though from validation is used only in the Front-End, the data that's posted to the API does get checked in all sorts of manner. To highlight a few:
+
+#### Post model
+
+The post model has a validator that's installed with the cloudianry package. This validator checks if image files are the right filetype and size.
+
+#### Song model
+
+The song model has a custom validator (validators.py) that checks if the audio file is .mp3 or m4a. Other files are not allowed. It checks both the extension of the file as well as the mimetype.
+
+#### User model
+
+The user model has all sorts of validations for the username and password. Like checking if the passwords match when entered, if it's long enough, dissimilar enough from the username, etc. These validators are handled by AllAuth.
+
 
 ### Database Security
 
-All secret keys connecting the database are stored in a env.py file that is never pushed to github. Furthermore, Cross-Site Request Forgery (CSFR) tokens were used on all forms throughout the project.
+All secret keys connecting the database are stored in a env.py file that is never pushed to github. CSFR and samesite policy's are set in front and back end.
 
 ## Deployment
 
@@ -208,12 +221,12 @@ All secret keys connecting the database are stored in a env.py file that is neve
 
 To test the app locally, the terminal within VScode was used. The steps to run this:
 
-* In your project workspace folder, open a terminal
+* In the project workspace folder, open a terminal
 * Run the command: ```python3 manage.py runserver```
 * Hit the 'open browser' button or visit ```http://localhost:8000/``` in the browser.
 * Use the website as usual.
 
-A local database was used for most of the local deployment usage, since it was necessary for the automated tests to run. However, the switch to using the production database could be easily made, in case migrations needed to be performed or otherwise. Furthermore, in the development version, DEBUG was set to False, so error messages would show follow.
+A local database was used for most of the local deployment usage. However, the switch to using the production database could be easily made, in case migrations needed to be performed or otherwise. Furthermore, in the development version, DEBUG was set to False, so error messages would show.
 
 ### Production Deployment Initial
 
@@ -227,13 +240,25 @@ Before starting work, the project was deployed to Heroku. This was done early in
 * Give the new app a name and click "Create new app".
 * Select a region (Europe for this app).
 
+#### Create Postgres Database:
+
+* Login to ElephantSQL.
+* Click on 'Create New Instance'.
+* Give the database a name and select the 'Tiny Turtle (free)' plan
+* Select region (Stockholm)
+* Review if everything is correct
+* Create Instance
+
 #### Connect Postgres Database:
 
+* Login to ElephantSQL and select the database that needs to be connected.
+* Copy the URL
+* Login the Heroku
 * Open your app on the main dashboard of Heroku.
-* Open the Resources tab and scroll to the add-ons section.
-* Type 'Postgres' and select the Heroku Postgres option.
-* Copy the DATABASE_URL in the Config Vars section of the Settings tab.
-* To use the Postgres database in your development environment, copy the DATABASE_URL in your env.py file.
+* Go to the settings tab
+* Reveal config vars
+* Add config var 'DATABASE_URL' and paste in the URL as value.
+* To use the Postgres database in the development environment, copy the DATABASE_URL in the project env.py file.
 
 #### Deploy App on Heroku:
 
@@ -241,23 +266,8 @@ Before starting work, the project was deployed to Heroku. This was done early in
 * Navigate to the "Config Vars" section and click "Reveal Config Vars"
 * Add SECRET_KEY variable
 * Add CLOUDINARY_URL variable
-* Add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY variables.
-* Under "Deployment Method" click on "GitHub" to get access to your repository.
-* Enable Automatic Deploys" or click "Deploy Branch" to deploy your app.
-
-### Production Deployment Update
-
-Since Heroku stopped offering free tiers on the 28th of november 2022, it was necessary to make a few adjustments to the whole production deployment of the app. 
-
-#### PostgreSQL database:
-
-The Postgres database add-on that was previously used within Heroku was now no longer free and thus a different service had to be used. The choice went to [ElephantSQL](https://www.elephantsql.com/), since they offer a free tier. A [script](https://github.com/Code-Institute-Org/postgres-migration-tool) written by Code Institutes team was used to copy the original database to the new database. The steps are described in the [github readme](https://github.com/Code-Institute-Org/postgres-migration-tool) of that script.
-
-After that, the steps were as follows:
-
-* remove database add on from Heroku.
-* remove old DATABASE_URL config var from settings and post new url from ElephantSQL database in its place.
-* transform app from free tier to an eco dyno.
+* Under "Deployment Method" click on "GitHub" to get access to the repository.
+* Enable Automatic Deploys" or click "Deploy Branch" to deploy the app.
 
 ## Acknowledgements
 
