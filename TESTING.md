@@ -40,14 +40,10 @@ For the manual testing of the backend, DRF's automagically generated "front-end"
 
 ## Automated testing
 
-Some automated tests were written for testing views and models of both the User and Salon app. This is handy in case packages need upgrading, or major changes to the app are made. In this case, automated tests can be run first, to find obvious errors caused by the changes. After that, manual testing should still be performed.
-
-### Running the test suite
-
-The tests are run by entering ```python3 manage.py test``` in the terminal window (inside the project folder). This will automatically run all test. If running tests in quick succession, it's recommended to add ```--keepdb``` at the end, so the database doesn't have to be rebuild for every test cycle. The test in the suite for this project all pass, but if one would fail, it would be displayed with a clear error message, so errors can be solved.
-
-![testing](static/images/testing.png)
+No automated tests were written for the backend.
 
 ## Bugs
 
 * When running the admin panel on the deployed Heroku version, the CSS wouldn't show. This was a two part bug: first, `DISABLE_COLLECTSTATIC = 1` was set as an environment variable. Because of this, Heroku couldn't probably set the paths to the static files (which live on Cloudinary) and thus not load the admin panel CSS. After removing the variable, `collectstatic` would run during Heroku deployment, but would fail. After some digging around, the cause was found to be a missing static folder. However, this folder did very much exist in the development version of the project. What happened, is that git ignored the folder since it was empty. To mitigate this, a empty `.keep` file was added to the static folder, so Heroku wouldn't ignore the folder any longer. After this the deployment had no issues and the CSS loaded.
+* When testing the connection from front-end to the back-end, CORS errors kept happening. The cause for this, was a simple typo in the Django settings. One of the settings necesarry to make CORS work is ```CORS_ALLOW_CREDENTIALS = True```. This was set, but not instead of 'ALLOW', 'ALLOWED' was written, which made the setting not take effect. After fixing the typo, the issue was resolved.
+* Signout bug: In local development, besides samesite issues, there are http and https issues. Standard, react runs a local http version of your site, but the backend logout view only accepts https. Because of this, the logout functionality wouldn't work. To mitigate this (before switching over to Gitpod completely, which would've also solved it), when running the react server, HTTPS=true was added to the npm start command.
