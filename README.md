@@ -1,19 +1,25 @@
-# Smart House Inventory
+# Melo-Api
 
-## Portfolio Project 4: Full Stack Toolkit
+## Portfolio Project 5: Advanced Front-End (Back End part)
 
-![Multi screen mockup](static/images/multi-device-mockup.png)
+![Api live link](static/readme-files/melo-api.png)
 
 This project is built as part of the Code Institute Full Stack Software Development course. For this course, Dirk Ornee had to built a fifth Portfolio Project. The focus with this project lies on having a good interactive front-end built in React and a backend built with Django REST that functions as a API to the frontend. This repo contains the backend part of the project.
-Since Dirk Ornee is himself a musician, it seemed a good idea to built a social media platform for musicians, where users can find a connect with other musicians and discover and promote new music.
+Since Dirk Ornee is himself a musician, it seemed a good idea to built a social media platform for musicians, where users can find and connect with other musicians and discover and promote new music.
 
 ## Live Site
 
-[NailsbyFaar](https://nailsbyfaar.herokuapp.com/)
+Back-End:
+[Melo-api](https://melo-api.herokuapp.com/)
+Front-End:
+[Melo](https://melo.herokuapp.com/)
 
 ## Github Repository
 
-[PortfolioProjectFour](https://github.com/DOdrums/PortfolioProjectFour)
+Back-End:
+[PortfolioProjectFiveApi](https://github.com/DOdrums/PortfolioProjectFiveAPI)
+Front-End:
+[portfolioprojectfive](https://github.com/DOdrums/portfolioprojectfive)
 
 ## UX
 
