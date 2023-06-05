@@ -25,15 +25,15 @@ Front-End:
 
 ### Business Goals
 
-The main goal of this project is to give a user the ability to book appointments at the NailsbyFaar nail salon. User should also get a good feeling for the salon and know what to expect from the treatments. If the user books an appointment, they should be able to make updates to their appointments in a user dashboard.
+The main goal of this project is to give a user the ability to find and connect with musicians on Melo. User is able to get a feel for a musicians playing style and ability and can immediately see (from the 'status' indicator) if somebody is available for new projects or not. Furthermore, a User can share his music and possibly gain some popularity with it, by appearing in the 'Most Mic'd Songs' list.
 
 ### Target Audience
 
-It might be obvious, but the target audience of this website is people who love getting their nails done! There isn't much more to be said about it, it can be people who go get their nails done for the first time, people who've gotten their nails done hundreds of times or people who are recurring customers at this specific salon. As long as they like pretty nails!
+The target audience for this platform is muscicians. The musicians can be of any experience level, it's a place for both amateurs and professionals to meet fellow musicians!
 
 ### User Stories
 
-User stories were written together with salon owner and were all written to fit within the agile methodology. They have the following criteria:
+User stories were written with the front end in mind, but were of course also used to determine things like the database schema, models and views of the DRF backend. The User Stories have the following criteria:
 
 * title
 * clear description
@@ -56,54 +56,63 @@ As you can see, only one user story was left, which didn't fit in the scope of t
 
 ### Structure of the app
 
-The app is designed to have a natural flow, with a strong focus on the booking functionality. Most pages include booking buttons or calls to book an appointment. The home page specifically features a booking button right on top, so a user doesn't have to scroll at all to make an appointment. This is especially handy and necessary for recurring customers, who will be the gross of the clientele.
+The app is designed to have a solid logic, that makes minimal programming in React necesarry. It can save a lot of time in your front-end, when the models are built in a logical way. For example, auto creating a user profile and instrument when a User instance is created, saves time on having to built forms for this in the front-end.
 
 ### Logic/Database Diagram
 
-The logic of the app was thought out by making a database diagram, to visualize which objects will need to be created for this app to be functional and how they will be connected to each other. Notably, the initial database diagram was incomplete, which was discovered during production of the app. See the images below:
+Part of the logic of the app was thought out by making a database diagram, to visualize which objects will need to be created for this app to be functional and how they will be connected to each other. See the image below:
 
 Initial database diagram:
 
-![database diagram](static/images/database-diagram.png)
+![database diagram](static/readme-files/database-diagram.png)
 
-Updated database diagram:
+Django Rest Framework's Class-Based Generic Views were used, to build the models in an Object Oriented and convenient way. For the User model specifically, the Django package 'AllAuth' was used. This does a lot of the work for you, like creating login and sign-up functionality and creating the User model and User Manager model. If you'd compare the database schema with the actual models in this repo, you'll see that some naming and fields changed. When building an app, it's not uncommon to change your opinion of what the best way forward is. So, though the general schematic stayed identical, the specifics changed slightly over time, to accomodate the front-end.
 
-![database diagram](static/images/database-diagram-updated.png)
-
-Django's Class-Based Generic Views were used, to build the models in an Object Oriented way. For the User model specifically, the Django package 'AllAuth' was used. This does a lot of the work for you, like creating unstyled login, sign-up and forgot password pages and functionality and creating the User model and User Manager model. For the purposes of this project, these two models had to be overridden, since a email address is used for authentication, instead of a username. Furthermore, phone number was added to  the user model.
-
-Let's quickly go through the other models:
-
-The Treatment model:
-
-* used to make a treatment object (the different kind of available treatments at the salon).
-* has a 'display' parameter, meaning: to be displayed on the homepage and treatments page or not.
-* has an 'active' parameter, meaning: to be displayed in the booking tool or not.
-* images are stored in Cloudinary via a CloudinaryField.
+Let's quickly go through the models:
 
 The User model:
 
 * built with Django AllAuth.
-* added phone_number, first_name and last_name.
 
-The Appointment model:
+The Profile model:
 
-* has foreign key relationships with the user model and treatment model.
-* any appointment will always have a treatment object selected as a foreign key.
-* any appointment can have a user selected as foreign key.
+* has foreign key relationship with the user model.
+* gets auto-created when a new user instance is created
 
-The Planning model:
+The Post model:
 
-* is used to configure available/bookable times in the datepicker
-* allow_times takes a comma separated list of time values, for example: 10:00, 10:15, 10:30 etc. This indicates which times on any given day are bookable.
-* disabled_days takes a comma separated list of dates, for example: 10.10.2022, 10.11.2022, 10.12.2022, etc. This indicates days that are off, like holidays.
-* disabled_weekdays takes a comma separated list of numbers, for example: 0, 3, 6. This indicates, with sunday starting at value '0', the days in any given week that are off. So, in the example given, sunday, wednesday and saturday are off days. This will repeat every week.
-* in the datepicker itself, all available times are calculated by using the values available in the active Planning Object and by removing any times from the datepicker where appointments already exist.
+* these instances represent the User's posts seen in the front-end
+* has foreign key relationship with the user model
+* has primary key relationship with the comment model and like model
 
-The Gallery model:
+The Song model:
 
-* used to upload images to Cloudinary, for use on the gallery page.
-* can be added, removed and set to active from the admin panel.
+* these instances represent the User's songs seen in the front-end
+* has foreign key relationship with the user model
+* has primary key relationship with the comment model and mic model
+
+The Mic and Like model:
+
+* are used to add mic's or likes to songs and posts respectively
+* has foreign key relationship with the user model
+
+The Instrument model:
+
+* is used to connect and instrument to a profile
+* includes instrument and experience level on that instrument as fields
+* has foreign key relationship with the user model
+
+The Following model:
+
+* is used to create a follower
+* owner fields indicates a owner the follows another user (the followed field)
+* has foreign key relationships with User model for both owner and followed field.
+
+The Comment model:
+
+* is used to comment on either songs or posts
+* has foreign key relationship with both Post and Song model
+
 
 
 ### Color Scheme
