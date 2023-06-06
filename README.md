@@ -7,6 +7,45 @@
 This project is built as part of the Code Institute Full Stack Software Development course. For this course, Dirk Ornee had to built a fifth Portfolio Project. The focus with this project lies on having a good interactive front-end built in React and a backend built with Django REST that functions as a API to the frontend. This repo contains the backend part of the project.
 Since Dirk Ornee is himself a musician, it seemed a good idea to built a social media platform for musicians, where users can find and connect with other musicians and discover and promote new music.
 
+<!-- TOC -->
+
+- [Melo-Api](#melo-api)
+    - [Portfolio Project 5: Advanced Front-End Back End part](#portfolio-project-5-advanced-front-end-back-end-part)
+    - [Live Site](#live-site)
+    - [Github Repository](#github-repository)
+    - [UX](#ux)
+        - [Business Goals](#business-goals)
+        - [Target Audience](#target-audience)
+        - [User Stories](#user-stories)
+        - [Structure of the app](#structure-of-the-app)
+        - [Logic/Database Diagram](#logicdatabase-diagram)
+        - [Features](#features)
+            - [Posts and Songs](#posts-and-songs)
+            - [Profiles](#profiles)
+            - [Other models](#other-models)
+        - [Future Features](#future-features)
+    - [Credits](#credits)
+        - [Code](#code)
+        - [Technologies used](#technologies-used)
+    - [Testing](#testing)
+    - [Security Features and Defensive Design](#security-features-and-defensive-design)
+        - [User authentication](#user-authentication)
+        - [Form Validation](#form-validation)
+            - [Post model](#post-model)
+            - [Song model](#song-model)
+            - [User model](#user-model)
+        - [Database Security](#database-security)
+    - [Deployment](#deployment)
+        - [Local Deployment](#local-deployment)
+        - [Production Deployment Initial](#production-deployment-initial)
+            - [Create Heroku app:](#create-heroku-app)
+            - [Create Postgres Database:](#create-postgres-database)
+            - [Connect Postgres Database:](#connect-postgres-database)
+            - [Deploy App on Heroku:](#deploy-app-on-heroku)
+    - [Acknowledgements](#acknowledgements)
+
+<!-- /TOC -->
+
 ## Live Site
 
 Back-End:
@@ -49,7 +88,7 @@ In the picture below you can see an example of the user stories while working on
 
 And the user stories board after finishing the project:
 
-![user stories board updated](static/images/user-stories-2.png)
+![user stories board updated](static/readme-files/user-stories-melo-2.png)
 
 As you can see, there are 4 user stories left, which didn't fit in the scope of the project in the end. Since these were a 'could have' and 'should have' but not must haves, the decision to leave them out was easily made. To view all the user stories in detail, visit the project page: [user stories board](https://github.com/users/DOdrums/projects/4)
 

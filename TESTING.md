@@ -1,4 +1,12 @@
+<!-- TOC -->
 
+- [Validator Testing](#validator-testing)
+    - [Python](#python)
+- [Manual Testing](#manual-testing)
+- [Automated testing](#automated-testing)
+- [Bugs](#bugs)
+
+<!-- /TOC -->
 
 ## Validator Testing
 
